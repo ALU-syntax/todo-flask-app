@@ -1,10 +1,7 @@
-# from project import app
 from flask import render_template, Blueprint, request, redirect
 from app import app
-from app.services.todo_service import todoService
 from app.model.todo import Todo
 from datetime import datetime
-from app.services import *
 import numpy as np
 
 
@@ -80,7 +77,7 @@ def updateTodo(id):
 @app.route('/todo/finish/<int:id>')
 def finishedTodo(id):
     if not id or id != 0:
-        entry = todos.todo_list[id]
+        entry = todos.todo_list[id-1]
         if entry['finished_at'] == None:
             print("debugFinish: datamasuk")
             entry['finished_at'] = formatDateTime
