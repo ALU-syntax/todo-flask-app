@@ -4,15 +4,19 @@ from app.model.todo import Todo
 from datetime import datetime
 import numpy as np
 
-
-
 todo = Blueprint("todo", __name__, static_folder="static", template_folder="templates")
 
 todos = Todo()
 time = datetime.now() 
-formatDateTime = time.strftime("%d"),'-',time.strftime("%m"),'-',time.strftime("%Y"), ' ',time.strftime("%H"),':',time.strftime("%M"),':',time.strftime("%S")
 
+day = time.strftime("%d")
+month = time.strftime("%m")
+year = time.strftime("%Y")
+hour = time.strftime("%H")
+minute = time.strftime("%M")
+second = time.strftime("%S")
 
+formatDateTime = f"{day}-{month}-{year} {hour}:{minute}:{second}"
 
 def all_the_args(*args):
     return args
